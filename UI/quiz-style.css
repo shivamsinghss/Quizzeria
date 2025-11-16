@@ -3,56 +3,98 @@
     src: url("https://acupoftee.github.io/fonts/Clip.ttf");
 }
 
-body, html {
-    margin: 0; padding: 0; width: 100%; height: 100%;
-    font-family: 'Clip', sans-serif;
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     background-color: #141114;
-    display: flex; justify-content: center; align-items: center;
-    color: #fff;
+    background-image:
+            linear-gradient(335deg, black 23px, transparent 23px),
+            linear-gradient(155deg, black 23px, transparent 23px),
+            linear-gradient(335deg, black 23px, transparent 23px),
+            linear-gradient(155deg, black 23px, transparent 23px);
+    background-size: 58px 58px;
+    background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
+    font-family: 'Clip', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .quiz-container {
     width: 90%;
     max-width: 700px;
     text-align: center;
-    background: linear-gradient(145deg, #ff65bd, #ffe6ff);
+    background: rgba(0,0,0,0.6);
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 0 40px #ff65bd, 0 0 60px #ffe6ff;
+    box-shadow: 0 0 40px #df71ea, 0 0 60px #ffe6ff;
+    position: relative;
+    z-index: 10;
 }
 
-h1 { font-size: 2.5rem; margin-bottom: 20px; color: #fff; }
+h1,h2,p {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
 
-.question-container { margin-bottom: 20px; }
+.question-container {
+    margin-bottom: 40px;
+}
 
-.question-text { font-size: 1.5rem; margin-bottom: 20px; }
+.question-text {
+    font-size: 2rem; /* bigger font */
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 0.5s forwards;
+    color: white;
+}
 
 .options-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: 1fr;
     gap: 15px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInOptions 0.5s forwards;
+    animation-delay: 0.5s;
+    color: white;
 }
 
-.option-btn {
-    padding: 15px;
+/* Radio button style */
+.option-label {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
     border-radius: 15px;
     background: #832dae;
-    color: #fff;
-    font-size: 1rem;
     cursor: pointer;
-    border: none;
-    transition: transform 0.3s, box-shadow 0.3s;
+    font-size: 1rem;
+    transition: all 0.3s;
+    color: #fff;
 }
 
-.option-btn:hover {
-    transform: scale(1.05);
+.option-label:hover {
+    transform: scale(1.03);
     box-shadow: 0 0 20px #ff65bd, 0 0 40px #ffe6ff;
+}
+
+.option-label input[type="radio"] {
+    margin-right: 12px;
+    accent-color: #ff65bd;
+    width: 20px;
+    height: 20px;
 }
 
 .feedback {
     margin-top: 20px;
     font-size: 1.2rem;
     min-height: 40px;
+    transition: all 0.3s;
 }
 
 .score-container.hidden { display: none; }
@@ -60,9 +102,44 @@ h1 { font-size: 2.5rem; margin-bottom: 20px; color: #fff; }
 .btn {
     padding: 10px 25px;
     font-size: 1.2rem;
-    background: #832dae;
+    background: #ff65bd;
     border: none;
     border-radius: 20px;
     cursor: pointer;
     margin-top: 20px;
+    color: #fff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInOptions {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Sound button top-right */
+.sound-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.sound-controls .btn {
+    background-color: #832dae;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px #ff65bd;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.sound-controls .btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #ff65bd, 0 0 40px #ffe6ff;
 }

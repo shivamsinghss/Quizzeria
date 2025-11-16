@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="quiz-style.css">
+</head>
+<body>
+<div class="quiz-container">
+    <h1 id="categoryTitle">Category: Math</h1>
+    <div id="questionContainer" class="question-container">
+        <div id="questionText" class="question-text"></div>
+        <div id="optionsContainer" class="options-container"></div>
+    </div>
+    <div id="feedback" class="feedback"></div>
+    <div id="scoreContainer" class="score-container hidden">
+        <h2>Game Over!</h2>
+        <p id="finalScore"></p>
+        <button id="restartBtn" class="btn">Play Again</button>
+    </div>
+</div>
+
+<script src="quiz-script.js"></script>
+</body>
+</html>
